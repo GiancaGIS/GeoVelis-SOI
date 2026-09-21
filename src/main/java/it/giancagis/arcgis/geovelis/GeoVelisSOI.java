@@ -97,7 +97,7 @@ public class GeoVelisSOI implements IServerObjectExtension, IRESTRequestHandler,
 
     private static final long serialVersionUID = 1L;
 
-    private final String version = "1.0.0";
+    private final String version = "1.0.1";
 
     private ILog serverLog;
     private IServerObject so;
