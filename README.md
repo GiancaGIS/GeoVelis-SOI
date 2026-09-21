@@ -4,7 +4,7 @@
 
 # GeoVelis SOI — Extra Data protection for ArcGIS Server Map Services
 
-GeoVelis SOI protects ArcGIS Server >= 12.1 map services by inspecting REST query requests before they reach the service and, when configured, post-processing JSON responses before they are returned to clients. It can score suspicious access patterns per request, user and inferred session, clamp expensive requests, restrict requested fields and envelope areas, mask sensitive attributes, and write security-relevant events to ArcGIS Server logs or an optional audit file.
+GeoVelis SOI protects ArcGIS Server 12.1+ map services by inspecting REST query requests before they reach the service and, when configured, post-processing JSON responses before they are returned to clients. It can score suspicious access patterns per request, user and inferred session, clamp expensive requests, restrict requested fields and envelope areas, mask sensitive attributes, and write security-relevant events to ArcGIS Server logs or an optional audit file.
 
 **GeoVelis SOI** is a Java Server Object Interceptor for ArcGIS Server/ArcGIS Enterprise.
 
