@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>it.giancagis.arcgis</groupId>
+    <artifactId>geovelis-soi</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>GeoVelis SOI</name>
+    <description>Audit, Query Guardian and Response Masking Server Object Interceptor for ArcGIS Server map services.</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- ArcGIS Enterprise SDK 12.x samples currently use Java 11 source/target.
+             Align this with the SDK version installed on your machine if needed. -->
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <arcgis.enterprise.sdk.version>12.1.0</arcgis.enterprise.sdk.version>
+    </properties>
+
+    <dependencies>
+        <!-- Installed locally by ArcGIS Enterprise SDK's install-maven-artifacts tool. -->
+        <dependency>
+            <groupId>com.esri.arcgis.enterprise.sdk</groupId>
+            <artifactId>arcgis-enterprise-sdk</artifactId>
+            <version>${arcgis.enterprise.sdk.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- Copies runtime dependencies into target/Install, following Esri Maven sample structure. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/Install</outputDirectory>
+                            <includeScope>runtime</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Esri plugin that packages the Java extension as a .soe file. -->
+            <plugin>
+                <groupId>com.esri.arcgis.enterprise.sdk</groupId>
+                <artifactId>sdk-plugin</artifactId>
+                <version>${arcgis.enterprise.sdk.version}</version>
+                <configuration>
+                    <configProp>
+                        <Version>1.0.0</Version>
+                        <Author>GiancaGIS</Author>
+                        <Company>GiancaGIS</Company>
+                        <TARGETS>12.1</TARGETS>
+                    </configProp>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>package-soe-goal</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package-soe</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

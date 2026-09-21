@@ -1,0 +1,8 @@
+### Query ampia - audit Query Guardian
+GET https://SERVER/arcgis/rest/services/NOME_SERVIZIO/MapServer/0/query?where=1%3D1&outFields=*&returnGeometry=true&resultRecordCount=999999&f=json
+
+### Query per test Response Masking
+GET https://SERVER/arcgis/rest/services/NOME_SERVIZIO/MapServer/0/query?where=1%3D1&outFields=CODICE_FISCALE,EMAIL,TELEFONO,NOME&returnGeometry=false&f=json
+
+### Query con geometria disabilitata ma campi sensibili presenti
+GET https://SERVER/arcgis/rest/services/NOME_SERVIZIO/MapServer/0/query?where=OBJECTID%3E0&outFields=CODICE_FISCALE,EMAIL&returnGeometry=false&resultRecordCount=10&f=json
