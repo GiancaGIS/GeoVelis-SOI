@@ -52,9 +52,6 @@ import java.util.Arrays;
  * - in enforce mode, block or modify query requests depending on configuration;
  * - pass through every other REST operation;
  * - optionally masks sensitive attributes in query JSON responses.
- *
- * SOAP/OGC behavior:
- * - pass-through only in v0.3.
  */
 @ArcGISExtension
 @ServerObjectExtProperties(
@@ -99,7 +96,7 @@ public class GeoVelisSOI implements IServerObjectExtension, IRESTRequestHandler,
 
     private static final long serialVersionUID = 1L;
 
-    private final String version = "1.0.0";
+    private final String version = "1.0.1";
 
     private ILog serverLog;
     private IServerObject so;
