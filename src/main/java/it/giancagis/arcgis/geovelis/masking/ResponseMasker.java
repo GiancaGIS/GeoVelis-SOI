@@ -20,14 +20,11 @@ import java.util.Set;
 
 /**
  * Post-processes ArcGIS REST JSON responses and masks configured sensitive attributes.
- *
- * v0.3 target shape:
  * {
  *   "features": [
  *     {"attributes": {"CODICE_FISCALE": "...", "EMAIL": "..."}, "geometry": {...}}
  *   ]
  * }
- *
  * GeoJSON FeatureCollection responses are supported through features[].properties.
  * The processor intentionally touches only feature attributes. It does not remove fields from the
  * service metadata, and it does not alter geometry.

@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-REM Build GeoVelis SOI v0.3
+REM Build GeoVelis SOI
 REM Ensure ArcGIS Enterprise SDK Maven artifacts are installed first:
 REM   cd "%ENTDEVKITJAVA%"
 REM   install-maven-artifacts.bat

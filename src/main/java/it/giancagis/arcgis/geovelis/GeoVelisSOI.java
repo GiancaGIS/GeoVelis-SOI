@@ -44,7 +44,6 @@ import java.util.Arrays;
 
 /**
  * GeoVelis SOI
- *
  * REST behavior:
  * - audit incoming/outgoing requests;
  * - inspect query operations;
@@ -52,9 +51,8 @@ import java.util.Arrays;
  * - in enforce mode, block or modify query requests depending on configuration;
  * - pass through every other REST operation;
  * - optionally masks sensitive attributes in query JSON responses.
- *
  * SOAP/OGC behavior:
- * - pass-through only in v0.3.
+ * - pass-through
  */
 @ArcGISExtension
 @ServerObjectExtProperties(

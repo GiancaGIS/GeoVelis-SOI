@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Build GeoVelis SOI v0.3
+# Build GeoVelis SOI
 # Ensure ArcGIS Enterprise SDK Maven artifacts are installed first:
 #   cd "$ENTDEVKITJAVA"
 #   ./install-maven-artifacts.sh
